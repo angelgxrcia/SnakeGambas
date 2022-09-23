@@ -1,0 +1,18 @@
+' Gambas class file
+
+' We're going to split the Whole Snake into separate modules
+'State
+Private posX As Integer    'Module position in horizontal axis. 
+Private posY As Integer    'Module position in vertical axis.
+Private side As Integer    'Side of the module in pixels
+Private moduleColor As Integer   'Snake's module color codified as a integer
+
+'Builder
+Public Sub _new(newPosX As Integer, newPosY As Integer, newColor As Integer, newSide As Integer)
+ 
+  posX = newPosX
+  posY = NewPosY
+  moduleColor = newColor
+  side = newSide
+ 
+End
