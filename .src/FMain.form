@@ -3,10 +3,11 @@
 { Form Form
   MoveScaled(0,0,125,89)
   { Timer1 #Timer
-    #MoveScaled(66,42)
+    #MoveScaled(114,80)
+    Delay = 100
   }
   { DrawingArea1 DrawingArea
-    MoveScaled(-1,0,126,77)
+    MoveScaled(0,0,126,77)
     Background = Color.LightForeground
   }
   { Button1 Button

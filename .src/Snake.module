@@ -2,5 +2,5 @@
 
 'State
 Private snakeDirection As String         'Snake direction movement
-Private moduleArray As New Module[]      'Snake body
+     'Snake body
 Private Const side As Byte = 15          'parameter of module's side
