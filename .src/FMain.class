@@ -1,21 +1,37 @@
 ' Gambas class file
 
-
-Public Sub Label2_MouseDown()
-
-  
-
-End
+  Private mySquare As Square
 
 Public Sub Button1_Click()
 
+  mySquare = New Square(Rand(0, DrawingArea1.Height), (Rand(0, DrawingArea1.Width)), 15, Color.Yellow)
   Timer1.Start()
-
+  DrawingArea1.SetFocus()
 End
 
 Public Sub Timer1_Timer()
-
-  DrawingArea1.Background = Color.RGB(Rand(0, 255), Rand(0, 255), Rand(0, 255))
+  mySquare.move()
   DrawingArea1.Refresh()
+  
+  ' mySquare.setPosX(Rand(0, DrawingArea1.Width))
+  ' mySquare.setPosY(Rand(0, DrawingArea1.Height))
+
+End
+
+Public Sub DrawingArea1_Draw()
+  If (mySquare <> Null) Then 
+ mySquare.display(DrawingArea1)
+ Endif 
+
+End
+
+Public Sub DrawingArea1_KeyPress()
+  Dim myKey As String
+
+  myKey = UCase$(Key.Text)
+  If (myKey = "W" Or myKey = "A" Or myKey = "S" Or myKey = "D") Then
+     mySquare.setDir(myKey)
+  Endif  
+
 
 End
