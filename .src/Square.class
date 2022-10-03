@@ -2,20 +2,76 @@
 
 ' We're going to split the Whole Snake into separate modules
 
-'State
+'       State
 
-Private posX As Integer    'Module position in horizontal axis. 
-Private posY As Integer    'Module position in vertical axis.
-Private side As Integer    'Side of the module in pixels
-Private moduleColor As Integer   'Snake's module color codified as a integer
+Private posX As Short    'Square position in horizontal axis. 
+Private posY As Short    'Square position in vertical axis.
+Private side As Short    'Side of the square in pixels
+Private squareColor As Integer   'Snake's square color codified as a integer
+Private dir As String
 
-'Builder
 
-Public Sub _new(newPosX As Integer, newPosY As Integer, newColor As Integer, newSide As Integer)
+'       Methods
+
+'       Builder
+
+Public Sub _new(newPosX As Short, newPosY As Short, newSide As Short, newColor As Integer)
  
   posX = newPosX
   posY = NewPosY
-  moduleColor = newColor
+  squareColor = newColor
   side = newSide
  
 End
+
+' move
+Public Sub move()
+
+If dir = "W" Then
+    posY = posY - side
+  Else If dir = "S" Then
+    posY = posY + side
+  Else If dir = "A" Then
+    posX = posX - side
+  Else 'derecha "D"
+    posX = posX + side
+  Endif 
+
+End
+
+' display
+
+Public Sub display(board As DrawingArea)
+  Paint.Begin(board)
+  Paint.Brush = Paint.Color(squareColor)
+  Paint.Rectangle(posX, posY, side, side)
+  Paint.Fill
+  Paint.End 
+  
+End
+' setters
+Public Function setPosY(newPosY As Short) As Short
+  
+  posY = newPosY
+  
+End
+
+Public Function setPosX(newPosX As Integer) As Integer
+  
+  posX = newPosX
+  
+End
+
+Public Function setDir(newDir As String) As String
+  
+  dir = newDir
+  
+End
+' getters
+Public Function getSide() As Short
+  
+  Return side
+  
+End
+
+' dispose 

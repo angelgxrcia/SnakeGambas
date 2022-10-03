@@ -1,21 +1,56 @@
 ' Gambas class file
 
+  Private mySquare As Square
 
-Public Sub Label2_MouseDown()
+Public Sub Button1_Click()
+
+  mySquare = New Square(Rand(0, (DrawingArea1.Height)), Rand(0, (DrawingArea1.Width)), (DrawingArea1.Height / 25), Color.Yellow)
+  Timer1.Start()
+    DrawingArea1.SetFocus()
+End
+
+Public Sub Timer1_Timer()
+  mySquare.move()
+  DrawingArea1.Refresh()
+  
+  ' mySquare.setPosX(Rand(0, DrawingArea1.Width))
+  ' mySquare.setPosY(Rand(0, DrawingArea1.Height))
+
+End
+
+Public Sub DrawingArea1_Draw()
+  If (mySquare <> Null) Then 
+ mySquare.display(DrawingArea1)
+ Endif 
+
+End
+
+' Public Sub DrawingArea1_KeyPress()
+'   Dim myKey As String
+' 
+'   myKey = UCase$(Key.Text)
+'   If (myKey = "W" Or myKey = "A" Or myKey = "S" Or myKey = "D") Then                                                                         Doesn't Work
+'      mySquare.setDir(myKey)
+'   Endif  
+' 
+' 
+' End
+
+Public Sub Form_Open()
 
   
 
 End
 
-Public Sub Button1_Click()
+Public Sub Form_KeyPress()
 
-  Timer1.Start()
+  Dim myKey As String
 
-End
-
-Public Sub Timer1_Timer()
-
-  DrawingArea1.Background = Color.RGB(Rand(0, 255), Rand(0, 255), Rand(0, 255))
-  DrawingArea1.Refresh()
+  myKey = UCase$(Key.Text)
+  If (myKey = "W" Or myKey = "A" Or myKey = "S" Or myKey = "D") Then
+     mySquare.setDir(myKey)
+  Endif  
 
 End
+
+
