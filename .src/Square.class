@@ -68,4 +68,10 @@ Public Function setDir(newDir As String) As String
   
 End
 ' getters
+Public Function getSide() As Short
+  
+  Return side
+  
+End
+
 ' dispose 

@@ -4,9 +4,9 @@
 
 Public Sub Button1_Click()
 
-  mySquare = New Square(Rand(0, DrawingArea1.Height), (Rand(0, DrawingArea1.Width)), 15, Color.Yellow)
+  mySquare = New Square(Rand(0, (DrawingArea1.Height)), Rand(0, (DrawingArea1.Width)), (DrawingArea1.Height / 25), Color.Yellow)
   Timer1.Start()
-  DrawingArea1.SetFocus()
+    DrawingArea1.SetFocus()
 End
 
 Public Sub Timer1_Timer()
@@ -25,7 +25,25 @@ Public Sub DrawingArea1_Draw()
 
 End
 
-Public Sub DrawingArea1_KeyPress()
+' Public Sub DrawingArea1_KeyPress()
+'   Dim myKey As String
+' 
+'   myKey = UCase$(Key.Text)
+'   If (myKey = "W" Or myKey = "A" Or myKey = "S" Or myKey = "D") Then                                                                         Doesn't Work
+'      mySquare.setDir(myKey)
+'   Endif  
+' 
+' 
+' End
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub Form_KeyPress()
+
   Dim myKey As String
 
   myKey = UCase$(Key.Text)
@@ -33,5 +51,6 @@ Public Sub DrawingArea1_KeyPress()
      mySquare.setDir(myKey)
   Endif  
 
-
 End
+
+
