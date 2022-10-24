@@ -1,31 +1,31 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,125,89)
-  { Timer1 #Timer
-    #MoveScaled(114,80)
-    Delay = 100
+  MoveScaled(0,0,97,103)
+  { Crono #Timer
+    #MoveScaled(88,92)
+    Delay = 200
   }
   { DrawingArea1 DrawingArea
-    MoveScaled(0,0,126,77)
+    MoveScaled(5,1,85.7143,85.7143)
     Background = Color.LightForeground
   }
-  { Button1 Button
-    MoveScaled(3,81,28,7)
+  { Jugar Button
+    MoveScaled(5,93,28,7)
     Background = Color.SoftRoyal
     Text = ("Start")
   }
   { Button2 Button
-    MoveScaled(32,81,28,7)
+    MoveScaled(34,93,28,7)
     Background = Color.SoftRoyal
     Text = ("Pause")
   }
   { Label1 Label
-    MoveScaled(66,82,12,5)
+    MoveScaled(65,93,12,5)
     Text = ("Score :")
   }
-  { Label2 Label
-    MoveScaled(78,82,12,5)
+  { Lpuntos Label
+    MoveScaled(75,93,12,5)
     Foreground = Color.DarkRed
     Text = ("0")
   }

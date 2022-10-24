@@ -1,56 +1,85 @@
 ' Gambas class file
 
-  Private mySquare As Square
+Private viborita As Snake
 
-Public Sub Button1_Click()
+Private miManzana As Square
+Private superManzana As Boolean
+Private contador As Short
 
-  mySquare = New Square(Rand(0, (DrawingArea1.Height)), Rand(0, (DrawingArea1.Width)), (DrawingArea1.Height / 25), Color.Yellow)
-  Timer1.Start()
-    DrawingArea1.SetFocus()
+
+
+Public Sub Jugar_Click()
+
+  viborita = New Snake(200, 300, 234543, "W")
+  miManzana = New Square(Color.RGB(255, 0, 0), 20, Rand(0, DrawingArea1.height), Rand(0, DrawingArea1.width))
+  contador = 0
+  Crono.Start()
+
+ 
+
 End
 
-Public Sub Timer1_Timer()
-  mySquare.move()
-  DrawingArea1.Refresh()
+Public Sub checkapple()
   
-  ' mySquare.setPosX(Rand(0, DrawingArea1.Width))
-  ' mySquare.setPosY(Rand(0, DrawingArea1.Height))
+  If viborita.seComeManzana(miManzana) = True Then
+    
+    miManzana.setPosX(Rand(0, DrawingArea1.height - 60))
+    miManzana.setPosY(Rand(0, DrawingArea1.width - 60)) 
+    DrawingArea1.Refresh()
+    contador = 1
+    superManzana = True
+    viborita.crecer()
+    LPuntos.Text = LPuntos.Text + 10
+      Else 
+        viborita.moverse()
+  Endif
+  If contador >= 1 And contador <= 20 Then
+    viborita.setSuperPoder(superManzana)
+    contador = contador + 1
+    Else 
+      contador = 0
+      superManzana = False
+      viborita.setSuperPoder(superManzana)
+  Endif
+     
+End
+
+
+Public Sub Crono_Timer()
+  checkapple()
+  If (viborita.estasMuerta(DrawingArea1)) Then
+     crono.Stop() 
+     Message.Info("Score: " & LPuntos.Text & " points")     
+     LPuntos.Text = "0"
+   Else
+     DrawingArea1.Refresh()
+
+  Endif 
 
 End
 
 Public Sub DrawingArea1_Draw()
-  If (mySquare <> Null) Then 
- mySquare.display(DrawingArea1)
- Endif 
 
-End
-
-' Public Sub DrawingArea1_KeyPress()
-'   Dim myKey As String
-' 
-'   myKey = UCase$(Key.Text)
-'   If (myKey = "W" Or myKey = "A" Or myKey = "S" Or myKey = "D") Then                                                                         Doesn't Work
-'      mySquare.setDir(myKey)
-'   Endif  
-' 
-' 
-' End
-
-Public Sub Form_Open()
-
-  
+  If (miManzana <> Null) Then 
+       miManzana.pintarse(DrawingArea1)
+   Endif
+  If (viborita <> Null) Then 
+     viborita.pintarse(DrawingArea1)
+  Endif
 
 End
 
 Public Sub Form_KeyPress()
+  Dim miTecla As String
 
-  Dim myKey As String
-
-  myKey = UCase$(Key.Text)
-  If (myKey = "W" Or myKey = "A" Or myKey = "S" Or myKey = "D") Then
-     mySquare.setDir(myKey)
+  miTecla = UCase$(Key.Text)
+  If (miTecla = "W" Or miTecla = "A" Or miTecla = "S" Or miTecla = "D") Then
+     viborita.cambiaDir(miTecla)
   Endif  
 
 End
-
-
+Public Sub DrawingArea1_KeyPress()
+  
+  Form_KeyPress()
+  
+End

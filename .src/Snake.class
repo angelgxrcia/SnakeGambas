@@ -1,7 +1,190 @@
 ' Gambas class file
 
-'State
-Private snakeDirection As String         'Snake direction movement
-Private Square As Snake[]                'Snake body
-Private Const side As Byte = 15          'parameter of module's side
+'####################################################
+
+'ESTADO - ATRIBUTOS
+
+'####################################################
+
+
+Private miCuerpo As Square[]
+Private direccion As String
+Private superPoder As Boolean
+
+
+
+'####################################################
+
+'COMPORTAMIENTO - MÉTODOS
+
+'####################################################
+
+'Constructor
+'primero ponemos public, después sub, _new para los constructores
+'después entre paréntesis tantos tripletes de parámetros como atributos (norma general)
+
+Public Sub _new(nuevaX As Short, nuevaY As Short, colorSerpiente As Integer, nuevaDir As String)
+
+
+     Dim cabeza As Square
+     cabeza = New Square(colorSerpiente, 20, nuevaX, nuevaY)
+     '¿cuál será el "ancho" de mi serpiente?
+     
+     ' Nos han definido la serpiente como de 20px
+     
+     
+     'Preparo la lista de cuadrados
+     miCuerpo = New Square[]
+     
+     'añadir la cabeza al cuerpo
+     miCuerpo.Add(cabeza)
+     direccion = nuevaDir
+     superPoder = False
+      
+      
+End
+
+'Moverse
+Public Sub moverse()
+  'crezco
+  Me.crecer()
+  
+  'quito el último
+  miCuerpo.Pop()
+  
+End
+
+
+
+'pintarse
+Public Sub pintarse(tablero As DrawingArea)
+
+  Dim iContador As Integer
+  'tengo que conseguir que cada uno de los cuadrados, uno a uno, se pinte
+  For iContador = 0 To miCuerpo.Count - 1
+      miCuerpo[iContador].pintarse(tablero)
+  Next
+    
+End
+
+'Crecimiento de la serpiente
+Public Sub crecer() 
+  'Coger un nuevo cuadrado. 
+  Dim colorSerpiente1 As Integer
+  Dim nuevaCabeza As Square
+  Dim cabezaAntigua As Square
+  colorSerpiente1 = Color.RGB(Rand(0, 170), Rand(240, 255), Rand(0, 170)) 
+  
+  cabezaAntigua = miCuerpo.First
+  'crearlo y ponerlo donde est á la cabeza.   
+  nuevaCabeza = New Square(colorSerpiente1, 20, cabezaAntigua.getPosX(), cabezaAntigua.getPosY())
+   
+  'Añadirlo al cuerpo
+  miCuerpo.Add(nuevaCabeza, 0)
+  
+  'Moverlo un paso adelante.
+  nuevaCabeza.moverse(direccion)
+  
+  
+  
+End
+
+
+Public Sub cambiaDir(letra As String)
+  
+  
+ If (direccion = "W" And letra = "S") Or 
+     (direccion = "A" And letra = "D") Or
+     (direccion = "D" And letra = "A") Or 
+     (direccion = "S" And letra = "W") Then
+     'No hacemos nada
+  Else
+    direccion = letra
+  Endif
+  
+  
+End
+
+Public Function seComeManzana(manzana As Square) As Boolean
+  
+  Dim resultado As Boolean
+  Dim cabeza As Square
+  resultado = False
+  cabeza = miCuerpo[0]
+  
+  If cabeza.getPosX() < (manzana.getPosX() + manzana.getLado()) And (cabeza.getPosX() + cabeza.getLado()) > manzana.getPosX() And cabeza.getPosY() < (manzana.getPosY() + manzana.getLado()) And (cabeza.getPosY() + cabeza.getLado()) > manzana.getPosY() Then
+    
+    resultado = True
+  Endif
+  
+  Return resultado
+  
+End
+
+Public Function estasMuerta(tablero As DrawingArea) As Boolean
+  
+  Dim resultado As Boolean
+  
+
+  resultado = False
+  
+  If seSaleBordes(tablero) Then
+    resultado = True
+  Endif
+  If Not resultado Then
+    
+     If seTocaElCuerpo() Then
+       resultado = True
+     Endif
+  Endif 
+  Return resultado
+  
+End
+
+Private Function seSaleBordes(tablero As DrawingArea) As Boolean
+  
+  Dim resultado As Boolean
+  Dim cabeza As Square
+  
+  cabeza = miCuerpo[0]  'En la posición 0 tenemos la cabeza
+  resultado = False
+  
+  
+  If cabeza.getPosX() < 0 Or cabeza.getPosX() > tablero.Width Or cabeza.getPosY() < 0 Or cabeza.getPosY() > tablero.Height Then
+    resultado = True
+  Endif
+  Return resultado
+End
+
+Private Function seTocaElCuerpo() As Boolean
+  
+  Dim resultado As Boolean
+  Dim posicion As Integer
+  Dim cabeza As Square
+  
+  cabeza = miCuerpo[0]
+  
+  resultado = False
+  If superPoder = True Then
+    Else 
+      For posicion = 4 To miCuerpo.Count - 1  'Comprobamos desde el cuadrado en la quinta posición hasta el final
+        If cabeza.encimaDe(miCuerpo[posicion]) Then                           'Comprobamos que funcione
+          resultado = True
+         Endif
+       Next
+  Endif
+    
+  
+  Return resultado
+  
+End
+
+Public Function setSuperPoder(newSuperpoder As Boolean)
+  
+  superPoder = newSuperpoder
+  
+End
+
+
+
 

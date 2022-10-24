@@ -1,77 +1,127 @@
 ' Gambas class file
 
-' We're going to split the Whole Snake into separate modules
+'####################################################
 
-'       State
+'ESTADO - ATRIBUTOS
 
-Private posX As Short    'Square position in horizontal axis. 
-Private posY As Short    'Square position in vertical axis.
-Private side As Short    'Side of the square in pixels
-Private squareColor As Integer   'Snake's square color codified as a integer
-Private dir As String
+'####################################################
+
+'un color para pintarse
+'lado en pixeles
+'necesitamos poner el cuadrado en un determinado pixel: x,y
+Private colorCuadrado As Integer
+Private lado As Short
+Private posX As Short
+Private posY As Short
 
 
-'       Methods
 
-'       Builder
 
-Public Sub _new(newPosX As Short, newPosY As Short, newSide As Short, newColor As Integer)
+'####################################################
+
+'COMPORTAMIENTO - MÉTODOS
+
+'####################################################
+
+'Constructor
+'primero ponemos public, después sub, _new para los constructores
+'después entre paréntesis tantos tripletes de parámetros como atributos (norma general)
+
+Public Sub _new(nuevoColor As Integer, nuevoLado As Short, nuevaX As Short, nuevaY As Short)
+
+
+      'asignamos los valores
+      
+      colorCuadrado = nuevoColor
+      lado = nuevoLado
+      posX = nuevaX
+      posY = nuevaY
+      
+End
+
+'Moverse
+Public Sub moverse(letra As String)
+  
+  If letra = "W" Then 
+    'queremos ir parriba
+    posY = posY - lado
+  Else If letra = "S" Then 
+    'queremos ir pabajo
+    posY = posY + lado
+  
+  Else If letra = "A" Then 
+    'queremos ir izquierda
+    posX = posX - lado
+
+  Else If letra = "D" Then 
+    'queremos ir derecha
+    posX = lado + posX  
+  Endif
+  
+  
+End
+
+
+
+'pintarse
+Public Sub pintarse(tablero As DrawingArea)
+  
+    Paint.Begin(tablero)
+    Paint.Brush = Paint.Color(colorCuadrado)
+    Paint.Rectangle(posX, posY, lado, lado) 
+    Paint.Fill 
+    Paint.End
+  
+End
+
+
+
+Public Function encimaDe(otrocuadrado As Square) As Boolean
+
+  Dim resultado As Boolean
+   If posX = otrocuadrado.getPosX() And posY = otrocuadrado.getPosY() Then
+     resultado = True
+   Else
+    resultado = False
+  Endif
  
-  posX = newPosX
-  posY = NewPosY
-  squareColor = newColor
-  side = newSide
+  Return resultado
  
 End
 
-' move
-Public Sub move()
 
-If dir = "W" Then
-    posY = posY - side
-  Else If dir = "S" Then
-    posY = posY + side
-  Else If dir = "A" Then
-    posX = posX - side
-  Else 'derecha "D"
-    posX = posX + side
-  Endif 
-
-End
-
-' display
-
-Public Sub display(board As DrawingArea)
-  Paint.Begin(board)
-  Paint.Brush = Paint.Color(squareColor)
-  Paint.Rectangle(posX, posY, side, side)
-  Paint.Fill
-  Paint.End 
+'getters
+Public Function getColor() As Integer
   
-End
-' setters
-Public Function setPosY(newPosY As Short) As Short
-  
-  posY = newPosY
+   Return colorCuadrado
   
 End
 
-Public Function setPosX(newPosX As Integer) As Integer
+
+Public Function getPosX() As Short
   
-  posX = newPosX
+   Return posX
   
 End
 
-Public Function setDir(newDir As String) As String
+Public Function getPosY() As Short
   
-  dir = newDir
+   Return posY
   
 End
-' getters
-Public Function getSide() As Short
+Public Function setPosY(nuevaPosY As Short) 
   
-  Return side
+   posY = nuevaPosY
+  
+End
+Public Function setPosX(nuevaPosX As Short) 
+  
+   posX = nuevaPosX
   
 End
 
-' dispose 
+Public Function getLado() As Integer
+ 
+  Return lado
+ 
+End
