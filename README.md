@@ -1,6 +1,5 @@
-# SnakeGambas
 
-# Snake DAW
+# Snake DAW en Gambas3 con BASIC
 
 <p align="center"><img src="https://github.com/angelgxrcia/SnakeGambas/blob/main/Snake_portada.jpg" alt="Logo"></p>
 
