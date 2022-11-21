@@ -21,7 +21,7 @@ Snake:
     Gonzalo, Nico.
 
 _Ampliación 1: Modificar el proyecto para que cada vez que la serpiente crezca se sume un punto a la puntuación del videojuego. Se debe de mostrar en el Label disponible en la pantalla principal._
---------------------------
+
 _Ampliación 2: Sonidos y Música. Hay que investigar cómo incluir sonido y música en el proyecto. La música sonará cuando se empieza a jugar, los sonidos cuando se mueve un tipo, cuando crece otro. El volumen de la música será más bajo que el de los sonidos._
 
 
