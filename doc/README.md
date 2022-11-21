@@ -8,17 +8,13 @@ Hemos llegado a las siguientes conclusiones:
 
 # DIA 16 nov:
 
-Snake:
-  Diagrama de Casos de Uso:
-    Felipe (solo hacer el commit, Ángel los tiene hecho)
-  Diagrama de clases:
-    Ardila
-  Diagrama de objetos:
-    Ángel 
-  Ampliación 1:
-    Ángel
-  Ampliación 2:
-    Gonzalo, Nico.
++ Snake:
+  + Diagrama de Casos de Uso: Felipe
+  + Diagrama de clases: Ardila
+  + Diagrama de objetos: Ángel 
+  + Ampliación 1: Ángel
+  + Ampliación 2:
+  + Gonzalo, Nico.
 
 _Ampliación 1: Modificar el proyecto para que cada vez que la serpiente crezca se sume un punto a la puntuación del videojuego. Se debe de mostrar en el Label disponible en la pantalla principal._
 
