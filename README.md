@@ -24,4 +24,4 @@ Curso 2022-2023.
 
 
 # Diario Scrum Master
-https://github.com/angelgxrcia/SpaceInvadersDAW/blob/main/Diario.pdf
+https://github.com/angelgxrcia/SnakeGambas/blob/main/doc/DiarioGrupo5.pdf
