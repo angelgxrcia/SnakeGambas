@@ -1,33 +1,33 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,115,102)
+  MoveScaled(0,0,98,87)
   Background = &HE4E4E4&
   { BComenzar Button
-    MoveScaled(13,82,16,4)
+    MoveScaled(6,78,16,4)
     Background = Color.SoftGreen
     Text = ("Comenzar")
   }
   { BPausar Button
-    MoveScaled(41,82,16,4)
+    MoveScaled(34,78,16,4)
     Background = Color.SoftRed
     Text = ("Pausar")
   }
-  { DrawingArea1 DrawingArea
-    MoveScaled(13,9,85,66)
-    Background = &H383838&
-  }
   { LPuntos Label
-    MoveScaled(80,82,8,3)
+    MoveScaled(73,78,8,3)
     Foreground = Color.TextBackground
     Text = ("0")
   }
   { LPuntuacion Label
-    MoveScaled(68,82,11,3)
+    MoveScaled(61,78,11,3)
     Foreground = Color.TextBackground
     Text = ("Puntuación")
   }
   { Crono #Timer
-    #MoveScaled(90,80)
+    #MoveScaled(83,76)
+  }
+  { DrawingArea1 DrawingArea
+    MoveScaled(6,5,85,66)
+    Background = &H383838&
   }
 }

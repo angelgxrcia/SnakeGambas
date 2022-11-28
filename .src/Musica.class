@@ -1,0 +1,51 @@
+' Gambas class file
+
+Private sonidoMusica As Sound
+Private canal1 As Channel
+Private sonidoMini As Sound
+Private canal2 As Channel
+
+
+Public Sub New()
+  
+   Channels.Count = 2
+   canal1 = Channels[0]
+   canal2 = Channels[1]
+   sonidoMusica = New Sound("/sonidos/musica.wav")
+   sonidoMini = New Sound("/sonidos/mini.wav")
+   
+   'SLIDERS PARA EL VOLUMEN
+   ' Slider1.MaxValue = 10 
+   ' Slider1.MinValue = 0
+   ' Slider1.Value = 10
+   ' Slider2.MaxValue = 10
+   ' Slider2.MinValue = 0
+   ' Slider2.Value = 10
+  
+End
+
+Public Sub playSonidoMini()
+   
+   sonidoMini.Play()
+   
+End
+
+
+Public Sub playSonidoMusica()
+   
+   sonidoMusica.Play()
+   
+End
+
+Public Sub pausarSonidos(pausar As Boolean)
+   
+   If (pausar)
+      sonidoMini.Pause()
+      sonidoMusica.Pause()
+      Return 
+   Endif 
+   
+   sonidoMini.Resume()
+   sonidoMusica.Resume()
+   
+End
