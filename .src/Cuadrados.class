@@ -1,0 +1,133 @@
+' Gambas class file
+
+' Gambas class file // Una clase es como un molde o plantilla donde indicamos los atributos y métodos de nuestro objeto. Gracias a las clases, varios usuarios u otros objetos pueden usar la clase al mismo tiempo.
+
+'Conjunto de "cuadrados" de tamaño previo definido que están adjuntos unos con otros formando una fila(no tiene por qu é ser en línea recta, puede contener giros de 90 o), y que se mueve hacia arriba, abajo, derecha o izquierda (siempre  se está moviendo a una determinada velocidad, normalmente un cuadrado por unidad  de tiempo).
+
+'Atributos (lado, posX, posY, color) 
+' Se declaran privados, puesto que no se deben modificar externamente.
+
+Private colorCuadrado As Integer
+Private lado As Short
+Private posX As Short
+Private posY As Short
+
+
+'Métodos'
+
+'Aquí se incializan los valores, se conoce como constructor el "Public Sub New"
+'Dentro de sus paréntesis se ponen parámetros'
+
+Public Sub New(nuevoColor As Integer, nuevoLado As Short, nuevaX As Short, nuevaY As Short)
+  
+  
+  'Creo los objetos y les doy valor
+  
+  colorCuadrado = nuevoColor
+  lado = nuevoLado
+  posX = nuevaX
+  posY = nuevaY
+  
+  
+End
+
+
+'Método moverse
+
+Public Sub moverse(letra As String)
+  
+  If letra = "W" Then 
+    
+    posY = posY - lado
+    
+    Else If letra = "S" Then 
+      
+      posY = posY + lado
+      
+      Else If letra = "D" Then 
+      
+      posX = posX + lado
+      
+      Else If letra = "A" Then 
+        
+        posX = posX - lado
+    
+  Endif
+  
+End
+
+'Método pintarse / aparecer
+
+Public Sub pintarse(tablero As DrawingArea)
+  
+  Paint.Begin(tablero)
+  Paint.Brush = Paint.Color(colorCuadrado)
+  Paint.Rectangle(posX, posY, lado, lado)
+  Paint.Fill
+  
+  
+End
+
+'Método ponerse encima de otro cuadrado
+
+Public Sub encimaDe(otrocuadrado As Cuadrados) As Boolean
+  
+  Dim resultado As Boolean
+    
+    If posX = otrocuadrado.getposX() And posY = otrocuadrado.getPosY() Then 
+      resultado = True
+      Else 
+        resultado = False
+        
+    Endif
+  
+  Return resultado
+  
+  
+End
+
+
+'ENCAPSULACIÓN
+'Getters (métodos públicos que devuelven los valores / tipos de datos que hemos declarado en los atributos privados) Si no estuvieran, la interfaz no tendría acceso a los atributos...
+
+Public Function getColor() As Integer
+  
+  Return colorCuadrado
+  
+End
+
+Public Function getLado() As Short
+  
+  Return lado
+  
+End
+
+Public Function getposX() As Short
+  
+  Return posX
+  
+End
+
+Public Function getPosY() As Short
+  
+  Return posY
+  
+  
+End
+
+'Setters (método público que nos permite modificar los valores que contienen nuestros atributos y determinar sus restricciones de cara al exterior)
+
+Public Function setPosY(nuevaPosY As Short) 
+  
+   posY = nuevaPosY
+  
+End
+
+Public Function setPosX(nuevaPosX As Short) 
+  
+   posX = nuevaPosX
+
+
+End 
+
+

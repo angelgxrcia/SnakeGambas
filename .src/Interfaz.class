@@ -1,0 +1,99 @@
+' Gambas class file
+
+' Interfaz: tablero de juego para dibujar la serpiente, que tiene un botón para comenzar la
+' partida, otro para pausar / continuar y unas etiquetas de texto que mostrarán los puntos conseguidos.
+' La aplicación tendrá una ventana básica con botones de minimización, cerrar y ampliar.
+
+'Atributos
+
+Private serpentina As Serpiente
+Private pasos As Integer
+
+
+Public Sub BComenzar_Click()
+
+serpentina = New Serpiente(5, 4, Color.Blue, "W")
+Crono.Start()
+LPuntos.Text = "0"
+pasos = 0
+DrawingArea1.SetFocus()
+
+End
+
+
+
+Public Sub BPausar_Click()
+
+  If (Crono.Enabled) Then
+      'estamos jugando, pausamos...
+      BPausar.Text = "Continuar"
+      Crono.Stop()   'pausamos el juego
+  Else
+      'si estoy pausado, continuamos...
+      BPausar.Text = "Pausar"
+      Crono.Start()
+      DrawingArea1.SetFocus()  
+  Endif
+
+End
+
+
+'Este comportamiento es para pintarse
+Public Sub DrawingArea1_Draw()
+ 
+  'Tengo que pedir a la serpiente que se dibuje... 
+  If (serpentina <> Null) Then
+    
+    serpentina.pintarse(DrawingArea1)
+    
+  Endif
+    
+  
+End
+
+
+Public Sub Crono_Timer()
+
+  pasos = pasos + 1
+  
+  If pasos = 3 Then 
+      pasos = 0
+      serpentina.crecer()
+      
+      Else
+     serpentina.moverse()
+     LPuntos.Text = LPuntos.Text + 10
+     
+     Endif
+  
+  If (serpentina.estasMuerta(DrawingArea1)) Then
+     Crono.Stop() 
+     Message.Info("Puntuacion: " & LPuntos.Text & " puntos")     
+     LPuntos.Text = "0"
+   Else
+     DrawingArea1.Refresh()
+
+  Endif 
+
+End
+
+'Qué hacer cuando pulsan teclas
+Public Sub Tablero_KeyPress()
+
+  Dim miTecla As String
+
+  miTecla = UCase$(Key.Text)
+  
+  If (miTecla = "W" Or miTecla = "A" Or miTecla = "S" Or miTecla = "D") Then
+     serpentina.cambiaDir(miTecla)
+  Endif  
+
+End
+
+
+
+Public Sub Form_Open()
+
+  
+
+End
