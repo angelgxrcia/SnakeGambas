@@ -1,0 +1,138 @@
+' Gambas class file
+
+'DEFINICIÓN
+
+' Una serpiente es un conjunto de "cuadrados" de tamaño previo definido que están
+' adjuntos unos con otros formando una fila(no tiene por qu é ser en línea recta, puede
+' contener giros de 90 o), y que se mueve hacia arriba, abajo, derecha o izquierda(siempre
+' se est á moviendo a una determinada velocidad, normalmente un cuadrado por unidad
+' de tiempo).
+
+' REGLAS:
+
+' - Cuando empezamos la serpiente tendrá una sola casilla e irá creciendo poco a poco cada cierto tiempo.
+' - Si la cabeza de la serpiente(el cuadrado inicial)se sale del tablero o tropieza consigo misma("se come a sí misma")se acaba la partida.
+' - Cada vez que la serpiente crece, se suman 10 puntos a la puntuaci ón de la partida.
+' - Para cambiar la direcci ón de la serpiente, se utilizarán cuatro teclas, la "W" para arriba,  la "S" para abajo, la "A" para la izquierda y la "D" para la derecha.
+' - En el caso de utilizar un móvil que no tenga asociado teclado físico, se asociará el cambio de movimiento de la serpiente a la dirección de la última posición pulsada en la pantalla de nuestro dispositivo.
+' - Si se pulsa en la parte superior, arriba, si se pulsa en la parte inferior, abajo, en el lateral izquierdo, a la izquierda, en el lateral derecho, a la derecha.
+
+
+'Atributos (cuerpo = cuadrados, direccion)
+'Se declaran privados, puesto que no se deben modificar externamente.
+
+Private cuerpo As New Cuadrados[]
+Private direccion As String
+
+
+'Constructor, inicializando nuevos objetos
+
+Public Sub New(nuevaX As Short, nuevaY As Short, colorSerpiente As Integer, nuevaDireccion As String)
+  
+  'Hacemos un cuadrado especial llamado cabeza que contiene una posición y color
+  Dim cabeza As Cuadrados
+  cabeza = New Cuadrados(colorSerpiente, 20, nuevaX, nuevaY)
+  
+  'El cuerpo de nuestra serpiente es un conjunto de cuadrados, be like:
+  cuerpo = New Cuadrados[]
+  'Junto la cabeza con el cuerpo
+  cuerpo.Add(cabeza)
+  
+  
+  direccion = nuevaDireccion
+  
+  
+End
+
+'Método pintarse
+
+Public Sub pintarse(tablero As DrawingArea)
+
+Dim iContador As Integer
+
+'Cada uno de los cuadrados debe pintarse, así que bucle
+
+For iContador = 0 To cuerpo.Count - 1
+    cuerpo[iContador].pintarse(tablero)
+Next
+
+End 
+
+'Método crecer
+
+Public Sub crecer()
+  
+  Dim cabeza As Cuadrados
+  Dim colorSerpiente As Integer
+  Dim cabezaNueva As Cuadrados
+  
+  colorSerpiente = Color.Green
+  cabezaNueva = New Cuadrados(cabeza.getX(), cabeza.getY(), Color.Green, cabeza.getLado())
+  cuerpo.Add(cabezaNueva, 0)
+  cabezaNueva.moverse(direccion)
+  
+End
+
+'Método moverse
+
+Public Sub moverse() 
+
+   Me.crecer() 
+    
+   cuerpo.Pop()
+  
+End
+
+'Método morirse
+
+'Preguntamos a la serpiente si sigue viva... es lo mejor que ella sabrá
+
+Public Function estasMuerta(iAncho As Integer, iAlto As Integer) As Boolean
+  
+   Dim bResultado As Boolean
+   Dim cabezaSerpiente As Cuadrados
+   Dim iContador As Integer
+   
+   
+   
+   cabezaSerpiente = cuerpo[0]
+   bResultado = False
+   
+   'si mi cabeza tiene un x menor que 0, estoy muerta
+   'si mi cabeza tiene un x mayor que el ancho, estoy muerta
+   'si mi cabeza tiene un y menor que 0, estoy muerta
+   'si mi cabeza tiene un y mayor que el alto, estoy muerta
+   
+   If cabezaSerpiente.getX() < 0 Or cabezaSerpiente.getY() < 0 Or
+      cabezaSerpiente.getX() > iAncho Or cabezaSerpiente.getY() > iAlto Then
+      bResultado = True
+      
+   Endif
+
+ 'ademas
+   'si para cada cuadrado de mi cuerpo de posicion quinta (4) o mayor
+   'la x de ese cuadrado y la y de ese cuadrado son exactamente = que 
+   'los de mi cabeza, estoy muerta.
+   For iContador = 4 To cuerpo.Count - 1 
+      If (cabezaSerpiente.colisiona(cuerpo[iContador])) Then
+         bResultado = True
+      Endif
+   Next
+  
+  'si estoy muerta es porque bResultado = True
+  
+   Return bResultado
+  
+End
+
+'Cambiamos la dirección cuando nos lo piden
+
+Public Sub cambiaDir(letra As String)
+  
+  'si letra es W,A,S,D y ninguna más, entonces...
+  If letra = "W" Or letra = "A" Or letra = "S" Or letra = "D" Then
+       direccion = letra
+  Endif
+        
+End
+
