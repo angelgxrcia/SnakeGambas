@@ -5,12 +5,13 @@
 ' La aplicación tendrá una ventana básica con botones de minimización, cerrar y ampliar.
 
 'Atributos
-
+Private DJ As Musica
 Private serpentina As Serpiente
 Private pasos As Integer
 
 
 Public Sub BComenzar_Click()
+
 
 serpentina = New Serpiente(5, 4, Color.Blue, "W")
 Crono.Start()
@@ -94,6 +95,6 @@ End
 
 Public Sub Form_Open()
 
-  
+  DJ.playSonidoMusica
 
 End

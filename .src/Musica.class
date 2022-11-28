@@ -11,8 +11,8 @@ Public Sub New()
    Channels.Count = 2
    canal1 = Channels[0]
    canal2 = Channels[1]
-   sonidoMusica = New Sound("/sonidos/musica.wav")
-   sonidoMini = New Sound("/sonidos/mini.wav")
+   sonidoMusica = New Sound("/sonidos/Musica.mp3") ' Dura 1:22 segundos
+   sonidoMini = New Sound("/sonidos/Mini.wav")
    
    'SLIDERS PARA EL VOLUMEN
    ' Slider1.MaxValue = 10 
