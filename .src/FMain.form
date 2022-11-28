@@ -25,9 +25,11 @@
   }
   { Crono #Timer
     #MoveScaled(83,76)
+    Delay = 200
   }
   { DrawingArea1 DrawingArea
     MoveScaled(6,5,85,66)
     Background = &H383838&
+    Focus = True
   }
 }

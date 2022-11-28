@@ -9,11 +9,19 @@ Private DJ As Musica
 Private serpentina As Serpiente
 Private pasos As Integer
 
+'Objeto vacío, hay que arreglarlo Monday November 28 2022
+' Public Sub Form_Open()
+' 
+'    
+'   DJ.playSonidoMusica
+' 
+' End
+
 
 Public Sub BComenzar_Click()
 
 
-serpentina = New Serpiente(5, 4, Color.Blue, "W")
+serpentina = New Serpiente(200, 300, Color.Green, "D")
 Crono.Start()
 LPuntos.Text = "0"
 pasos = 0
@@ -55,6 +63,8 @@ End
 
 Public Sub Crono_Timer()
 
+
+
   pasos = pasos + 1
   
   If pasos = 3 Then 
@@ -63,18 +73,19 @@ Public Sub Crono_Timer()
       
       Else
      serpentina.moverse()
-     LPuntos.Text = LPuntos.Text + 10
+     LPuntos.Text = LPuntos.Text + 1
      
      Endif
   
-  If (serpentina.estasMuerta(DrawingArea1)) Then
+  If (serpentina.estasMuerta(DrawingArea1.Width, DrawingArea1.Height)) Then
      Crono.Stop() 
-     Message.Info("Puntuacion: " & LPuntos.Text & " puntos")     
+     Message.Info("Puntuación: " & LPuntos.Text & " pts")     
      LPuntos.Text = "0"
-   Else
-     DrawingArea1.Refresh()
+   
 
   Endif 
+
+   DrawingArea1.Refresh()
 
 End
 
@@ -92,9 +103,3 @@ Public Sub Tablero_KeyPress()
 End
 
 
-
-Public Sub Form_Open()
-
-  DJ.playSonidoMusica
-
-End

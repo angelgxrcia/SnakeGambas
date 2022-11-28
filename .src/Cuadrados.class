@@ -18,7 +18,7 @@ Private posY As Short
 'Aquí se incializan los valores, se conoce como constructor el "Public Sub New"
 'Dentro de sus paréntesis se ponen parámetros'
 
-Public Sub New(nuevoColor As Integer, nuevoLado As Short, nuevaX As Short, nuevaY As Short)
+Public Sub _new(nuevoColor As Integer, nuevoLado As Short, nuevaX As Short, nuevaY As Short)
   
   
   'Creo los objetos y les doy valor

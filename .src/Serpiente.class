@@ -27,11 +27,11 @@ Private direccion As String
 
 'Constructor, inicializando nuevos objetos
 
-Public Sub New(nuevaX As Short, nuevaY As Short, colorSerpiente As Integer, nuevaDireccion As String)
+Public Sub _new(nuevaX As Short, nuevaY As Short, colorSerpiente As Integer, nuevaDireccion As String)
   
   'Hacemos un cuadrado especial llamado cabeza que contiene una posición y color
   Dim cabeza As Cuadrados
-  cabeza = New Cuadrados(colorSerpiente, 20, nuevaX, nuevaY)
+  cabeza = New Cuadrados(Color.Green, 20, 100, 20)
   
   'El cuerpo de nuestra serpiente es un conjunto de cuadrados, be like:
   cuerpo = New Cuadrados[]
@@ -61,13 +61,18 @@ End
 'Método crecer
 
 Public Sub crecer()
+ 
+   
   
   Dim cabeza As Cuadrados
   Dim colorSerpiente As Integer
   Dim cabezaNueva As Cuadrados
   
+  cabeza = cuerpo[0]
+  
   colorSerpiente = Color.Green
-  cabezaNueva = New Cuadrados(cabeza.getX(), cabeza.getY(), Color.Green, cabeza.getLado())
+  
+  cabezaNueva = New Cuadrados(cabeza.getposX(), cabeza.getposY(), Color.Green, cabeza.getLado())
   cuerpo.Add(cabezaNueva, 0)
   cabezaNueva.moverse(direccion)
   
@@ -103,8 +108,9 @@ Public Function estasMuerta(iAncho As Integer, iAlto As Integer) As Boolean
    'si mi cabeza tiene un y menor que 0, estoy muerta
    'si mi cabeza tiene un y mayor que el alto, estoy muerta
    
-   If cabezaSerpiente.getX() < 0 Or cabezaSerpiente.getY() < 0 Or
-      cabezaSerpiente.getX() > iAncho Or cabezaSerpiente.getY() > iAlto Then
+   'Joselito ten cuidado con los .getposX xD
+   If cabezaSerpiente.getposX() < 0 Or cabezaSerpiente.getposY() < 0 Or
+      cabezaSerpiente.getposX() > iAncho Or cabezaSerpiente.getposY() > iAlto Then
       bResultado = True
       
    Endif
