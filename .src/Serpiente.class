@@ -44,6 +44,16 @@ Public Sub _new(nuevaX As Short, nuevaY As Short, colorSerpiente As Integer, nue
   
 End
 
+'Método moverse
+
+Public Sub moverse() 
+
+   Me.crecer() 
+    
+   cuerpo.Pop()
+  
+End
+
 'Método pintarse
 
 Public Sub pintarse(tablero As DrawingArea)
@@ -59,37 +69,50 @@ Next
 End 
 
 'Método crecer
+'Proximamente
+' Public Sub crecer()
+'  
+'   'Dim cabeza As Cuadrados
+'   Dim colorSerpiente As Integer
+'   Dim cabezaNueva As Cuadrados
+'   
+'   cabeza = cuerpo[0]
+'   
+'   colorSerpiente = Color.Green
+'   
+'   cabezaNueva = New Cuadrados(cabeza.getposX(), cabeza.getposY(), Color.Green, cabeza.getLado())
+'   cuerpo.Add(cabezaNueva, 0)
+'   cabezaNueva.moverse(direccion)
+'   
+' End
 
-Public Sub crecer()
- 
+Public Sub crecer() 
+  'Coger un nuevo cuadrado. 
+  Dim nuevaCabeza As Cuadrados
+  Dim cabezaAntigua As Cuadrados
+  
+  
+  cabezaAntigua = cuerpo.First
+  'crearlo y ponerlo donde est á la cabeza.   
+  nuevaCabeza = New Cuadrados(cabezaAntigua.getColor(), 20, cabezaAntigua.getPosX(), cabezaAntigua.getPosY())
    
+  'Añadirlo al cuerpo
+  cuerpo.Add(nuevaCabeza, 0)
   
-  Dim cabeza As Cuadrados
-  Dim colorSerpiente As Integer
-  Dim cabezaNueva As Cuadrados
+  'Moverlo un paso adelante.
+  nuevaCabeza.moverse(direccion)
   
-  cabeza = cuerpo[0]
   
-  colorSerpiente = Color.Green
-  
-  cabezaNueva = New Cuadrados(cabeza.getposX(), cabeza.getposY(), Color.Green, cabeza.getLado())
-  cuerpo.Add(cabezaNueva, 0)
-  cabezaNueva.moverse(direccion)
-  
-End
-
-'Método moverse
-
-Public Sub moverse() 
-
-   Me.crecer() 
-    
-   cuerpo.Pop()
   
 End
 
 'Método morirse
-
+' Public Function estasMuerta() As Boolean
+'   
+'    Return False
+'    End 
+   
+   'PROXIMAMENTE 11/28/2022 21:02:17
 'Preguntamos a la serpiente si sigue viva... es lo mejor que ella sabrá
 
 Public Function estasMuerta(iAncho As Integer, iAlto As Integer) As Boolean
@@ -120,7 +143,7 @@ Public Function estasMuerta(iAncho As Integer, iAlto As Integer) As Boolean
    'la x de ese cuadrado y la y de ese cuadrado son exactamente = que 
    'los de mi cabeza, estoy muerta.
    For iContador = 4 To cuerpo.Count - 1 
-      If (cabezaSerpiente.colisiona(cuerpo[iContador])) Then
+      If (cabezaSerpiente.encimaDe(cuerpo[iContador])) Then
          bResultado = True
       Endif
    Next
@@ -141,4 +164,5 @@ Public Sub cambiaDir(letra As String)
   Endif
         
 End
+
 

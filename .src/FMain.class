@@ -77,12 +77,13 @@ Public Sub Crono_Timer()
      
      Endif
   
+  'PROXIMAMENTE 11/28/2022 21:02:17
   If (serpentina.estasMuerta(DrawingArea1.Width, DrawingArea1.Height)) Then
      Crono.Stop() 
      Message.Info("Puntuación: " & LPuntos.Text & " pts")     
      LPuntos.Text = "0"
    
-
+  
   Endif 
 
    DrawingArea1.Refresh()
@@ -90,7 +91,7 @@ Public Sub Crono_Timer()
 End
 
 'Qué hacer cuando pulsan teclas
-Public Sub Tablero_KeyPress()
+Public Sub DrawingArea1_KeyPress()
 
   Dim miTecla As String
 

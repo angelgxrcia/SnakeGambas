@@ -34,27 +34,23 @@ End
 
 'Método moverse
 
-Public Sub moverse(letra As String)
+'Moverse
+  Public Sub moverse(letra As String)
   
-  If letra = "W" Then 
-    
+  If letra = "w" Or letra = "W" Then 
     posY = posY - lado
-    
-    Else If letra = "S" Then 
-      
-      posY = posY + lado
-      
-      Else If letra = "D" Then 
-      
-      posX = posX + lado
-      
-      Else If letra = "A" Then 
-        
-        posX = posX - lado
-    
+
+  Else If letra = "s" Or letra = "S" Then 
+    posY = posY + lado
+  
+  Else If letra = "a" Or letra = "A" Then 
+    posX = posX - lado
+  
+  Else If letra = "d" Or letra = "D" Then 
+    posX = posX + lado
   Endif
   
-End
+End 
 
 'Método pintarse / aparecer
 
@@ -64,6 +60,7 @@ Public Sub pintarse(tablero As DrawingArea)
   Paint.Brush = Paint.Color(colorCuadrado)
   Paint.Rectangle(posX, posY, lado, lado)
   Paint.Fill
+  Paint.End
   
   
 End
