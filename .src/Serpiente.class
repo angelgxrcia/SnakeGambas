@@ -68,6 +68,30 @@ Next
 
 End 
 
+Public Function Colorida() As Integer
+   
+  Dim colorines, resultado As Integer
+  
+  resultado = Rand(1, 3)
+  
+  If (resultado = 1) Then 
+     colorines = Color.Red
+     
+     Else If
+        (resultado = 2) Then
+         colorines = Color.Green
+         
+         Else 
+         colorines = Color.Blue
+               
+  Endif
+  
+       Return colorines
+   
+   
+End
+
+
 'Método crecer
 'Proximamente
 ' Public Sub crecer()
@@ -88,13 +112,19 @@ End
 
 Public Sub crecer() 
   'Coger un nuevo cuadrado. 
+
   Dim nuevaCabeza As Cuadrados
   Dim cabezaAntigua As Cuadrados
+  Dim colorines As Integer
+  Dim resultado As Integer
   
   
   cabezaAntigua = cuerpo.First
+  cabezaAntigua.setColor(Colorida())
+  
   'crearlo y ponerlo donde est á la cabeza.   
   nuevaCabeza = New Cuadrados(cabezaAntigua.getColor(), 20, cabezaAntigua.getPosX(), cabezaAntigua.getPosY())
+  
    
   'Añadirlo al cuerpo
   cuerpo.Add(nuevaCabeza, 0)
