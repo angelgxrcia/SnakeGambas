@@ -21,7 +21,7 @@ Private pasos As Integer
 Public Sub BComenzar_Click()
 
 
-serpentina = New Serpiente(200, 300, Color.Green, "D")
+serpentina = New Serpiente(200, 300, Color.Orange, "S")
 Crono.Start()
 LPuntos.Text = "0"
 pasos = 0

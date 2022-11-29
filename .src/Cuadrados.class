@@ -127,4 +127,11 @@ Public Function setPosX(nuevaPosX As Short)
 
 End 
 
+Public Function setColor(nuevoColor As Integer) 
+  
+   colorCuadrado = nuevoColor
+
+
+End 
+
 
