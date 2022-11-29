@@ -1,3 +1,5 @@
+SCRUM MASTER--> Gonzalo
+
 # DIA 8 nov:
 Realización de una reunión entre todos los integrantes del grupo, creando las estructuras del proyecto y poniendo todo en marcha.
 
@@ -36,3 +38,28 @@ Cada uno ha ido realizado la parte del trabajo que tenía asignada.
 # DIA 21 nov:
 Hemos hecho una reunión en la que hemos comparado las ramas y hemos revisado el trabajo de cada uno.
 En esta reunión también hemos llegado a la conclusión de que nos tenemos que organizar mejor, porque nos ha costado y hemos dejado algunas cosas para el último momento. Lo tendremos en cuenta de aquí en adelante.
+
+CAMBIO DE SCRUM MASTER--> José Ardila
+
+#DIA 23 nov:
+Organizamos el trabajo diciendo que haciamos cada uno de los integrantes:
+
+- Nico: puntuación de la serpiente, movimiento y pintarse.
+- Ángel: ha conseguido que el cuerpo de la serpiente se pinte de verde, azul y rojo, de manera de aleatoria, pero a la cabeza no le ha puesto color.
+- Gonzalo: ha hecho la clase "música" y ha hecho junto a Ardila al diagrama de clases de la serpiente.
+- José Ardila: he estado actualizando los documentos del Snake y he hecho junto a Gonzalo el diagrama de clase del Snake.
+- José Gómez: 
+- Felipe: ha puesto todas las relaciones de los diagramas subidos (Snake y Space Invaders).
+
+DIA 27 nov:
+Nico rescribió todo el código basándose en el proyecto del profesor.
+
+DIA 28 nov:
+Reconstrucción de la base del proyecto porque la otra versión estaba mal, ya que tenía la funcionalidad manzana. El resultado concluyó con la obtención de puntos con el movimiento de la serpiente.
+
+DIA 29 nov:
+En la reunión de hoy hemos encontrado las siguientes dificultades:
+- No saber como programar orientado a POO.
+- Las relaciones con respecto a los diagramas.
+- Compañeros que han estado ocupados o enfermos (baja del personal).
+- Organización con las reuniones.
