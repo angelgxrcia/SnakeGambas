@@ -41,7 +41,7 @@ En esta reunión también hemos llegado a la conclusión de que nos tenemos que 
 
 CAMBIO DE SCRUM MASTER--> José Ardila
 
-#DIA 23 nov:
+# DIA 23 nov:
 Organizamos el trabajo diciendo que haciamos cada uno de los integrantes:
 
 - Nico: puntuación de la serpiente, movimiento y pintarse.
@@ -51,13 +51,13 @@ Organizamos el trabajo diciendo que haciamos cada uno de los integrantes:
 - José Gómez: 
 - Felipe: ha puesto todas las relaciones de los diagramas subidos (Snake y Space Invaders).
 
-DIA 27 nov:
+# DIA 27 nov:
 Nico rescribió todo el código basándose en el proyecto del profesor.
 
-DIA 28 nov:
+# DIA 28 nov:
 Reconstrucción de la base del proyecto porque la otra versión estaba mal, ya que tenía la funcionalidad manzana. El resultado concluyó con la obtención de puntos con el movimiento de la serpiente.
 
-DIA 29 nov:
+# DIA 29 nov:
 En la reunión de hoy hemos encontrado las siguientes dificultades:
 - No saber como programar orientado a POO.
 - Las relaciones con respecto a los diagramas.
