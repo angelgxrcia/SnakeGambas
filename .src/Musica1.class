@@ -1,19 +1,18 @@
 ' Gambas class file
 
+Private sonidoMusica As Sound
 Private canal1 As Channel
 Private sonidoMini As Sound
+Private canal2 As Channel
 
 
 Public Sub _new()
   
    Channels.Count = 2
    canal1 = Channels[0]
-   Music.Load("assets/Musica.wav")
-   
-   sonidoMini = Sound.Load("assets/Mini.wav")
- 
- 
- 
+   canal2 = Channels[1]
+   sonidoMusica.Load("assets/Musica.ogg")
+   sonidoMini.Load("assets/Mini.ogg")
    'sonidoMusica = New Sound("assets/Mini.ogg") ' Dura 1:22 segundos
   'sonidoMini = New Sound("assets/Musica.ogg")
    
@@ -36,19 +35,19 @@ End
 
 Public Sub playSonidoMusica()
    
-   Music.Play()
+   sonidoMusica.Play()
    
 End
 
 Public Sub pausarSonidos(pausar As Boolean)
    
    If (pausar)
-      canal1.Pause
-      Music.Pause()
+      sonidoMini.Pause()
+      sonidoMusica.Pause()
       Return 
    Endif 
    
-   canal1.Play()
-   Music.Play()
+   sonidoMini.Resume()
+   sonidoMusica.Resume()
    
 End

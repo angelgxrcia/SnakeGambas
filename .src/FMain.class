@@ -13,14 +13,15 @@ Private pasos As Integer
 ' Public Sub Form_Open()
 ' 
 '    
-'   DJ.playSonidoMusica
+'   yDJ.playSonidoMusica
 ' 
 ' End
 
 
 Public Sub BComenzar_Click()
 
-
+DJ = New Musica
+DJ.playSonidoMusica()
 serpentina = New Serpiente(200, 300, Color.Orange, "S")
 Crono.Start()
 LPuntos.Text = "0"
@@ -70,6 +71,7 @@ Public Sub Crono_Timer()
   If pasos = 3 Then 
       pasos = 0
       serpentina.crecer()
+      DJ.playSonidoMini()
       
       Else
      serpentina.moverse()
