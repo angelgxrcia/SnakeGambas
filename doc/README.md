@@ -63,3 +63,6 @@ En la reunión de hoy hemos encontrado las siguientes dificultades:
 - Las relaciones con respecto a los diagramas.
 - Compañeros que han estado ocupados o enfermos (baja del personal).
 - Organización con las reuniones.
+
+# DIA 30 nov:
+Gonzalo ha arreglado y terminado la clase "música" para su uso.
