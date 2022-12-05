@@ -67,5 +67,5 @@ En la reunión de hoy hemos encontrado las siguientes dificultades:
 # DIA 30 nov:
 Gonzalo ha arreglado y terminado la clase "música" para su uso.
 
-# DIA 4 nov:
+# DIA 4 dic:
 José Gómez programó la cabeza de la serpiente para que se quede en un color fijo.
