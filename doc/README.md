@@ -48,7 +48,7 @@ Organizamos el trabajo diciendo que haciamos cada uno de los integrantes:
 - Ángel: ha conseguido que el cuerpo de la serpiente se pinte de verde, azul y rojo, de manera de aleatoria, pero a la cabeza no le ha puesto color.
 - Gonzalo: ha hecho la clase "música" y ha hecho junto a Ardila al diagrama de clases de la serpiente.
 - José Ardila: he estado actualizando los documentos del Snake y he hecho junto a Gonzalo el diagrama de clase del Snake.
-- José Gómez: 
+- José Gómez: ha estado programando que la cabeza de la serpiente se quede en un solo color.
 - Felipe: ha puesto todas las relaciones de los diagramas subidos (Snake y Space Invaders).
 
 # DIA 27 nov:
@@ -66,3 +66,6 @@ En la reunión de hoy hemos encontrado las siguientes dificultades:
 
 # DIA 30 nov:
 Gonzalo ha arreglado y terminado la clase "música" para su uso.
+
+# DIA 4 nov:
+José Gómez programó la cabeza de la serpiente para que se quede en un color fijo.
